@@ -1,0 +1,45 @@
+/* Cambios realizados para ocultar estilos y modificar los estilos personalizados*/
+.theme-info {
+  display: none;
+}
+.contentColumn {
+  float: left;width: 33%;
+}
+li#menu-item-11077,li#menu-item-11078,#newsletterwidget-2 {
+  display: none;
+}
+#menu-footer-menu:before {
+  display:none;
+}
+.site-info {
+  width: 100%;display: inline-block;
+}
+.footer-widget-area {
+    height: 240px;
+    padding: 35px 0;
+	background-color: #1D3562;
+}
+.contentColumn a {
+    padding: 1px 4px;
+}
+.site-footer {
+    background-color: #ffffff;
+}
+.cat__icon path , svg#Capa_1 {
+    fill: #FFFF;
+}
+.card__tags svg#Capa_1 {
+    fill: #dd0000;
+}
+.woocommerce-product-details__short-description p {
+    padding-bottom: 10px;
+}
+
+.listing-products__items form.cart {
+    display: none;
+}
+.widget_listing_sidebar_products h3.widget_sidebar_title {
+    background-color: #001175;
+    color: #FFF !important;
+    padding: 9px 0;
+}
