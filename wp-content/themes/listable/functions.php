@@ -205,7 +205,7 @@ function listable_scripts() {
 	$listable_scripts_deps[] = 'scroll-to-plugin';
 	wp_enqueue_script( 'cssplugin', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/plugins/CSSPlugin.min.js', array( 'jquery' ) );
 	$listable_scripts_deps[] = 'cssplugin';
-	
+
 	wp_enqueue_script( 'listable-scripts', get_template_directory_uri() . '/assets/js/main.js', $listable_scripts_deps, $theme->get( 'Version' ), true );
 
 	if ( is_singular( array( 'post', 'job_listing' ) ) && comments_open() && get_option( 'thread_comments' ) ) {
@@ -521,8 +521,14 @@ function change_social_login_text_option( $login_text ) {
 }
 add_filter( 'pre_option_wc_social_login_text', 'change_social_login_text_option' );
 
+/**
+ * Function get rates for currencies
+ * @param  String $currency
+ * @param  Double $price
+ * @return Double           new Price.
+ */
 function getExchangeRate($currency,$price){
-	
+
 	$args = array(
 		'post_type'  => 'exchange-rate',
 		'orderby'    => 'p',
@@ -539,7 +545,7 @@ function getExchangeRate($currency,$price){
 	            'key' => 'wpcf-symbol',
 	        ),
 	    ),
-		
+
 	);
 	$result= 0;
 	try {
@@ -551,9 +557,59 @@ function getExchangeRate($currency,$price){
 			if(strtolower($metaCurrency)=== $currency)
 				$result = $metaValue*$price;
 		}
-		
+
 	} catch (Exception $e) {
 	    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
 	}
+	//callRestOpenExchangesRates();
 	return $result;
+}
+
+/**
+ * this function is used by get rates automatic
+ * @return VOID
+ */
+function callRestOpenExchangesRates(){
+	$appId 		= "ddc53c7e87d444d59704c227b057e845";
+	$symbols 	= "GBP%2CEUR%2CAED%2CCOP%2CNZD%2CCAD%2CUSD";
+	$url 			= "https://openexchangerates.org/api/latest.json?";
+	$curl 		= curl_init();
+
+	$serviceURL = $url."app_id=".$appId."&symbols=".$symbols;
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => $serviceURL,
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => "",
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 30,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => "GET",
+	  CURLOPT_HTTPHEADER => array("cache-control: no-cache"),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+		//echo $response;
+		$data =  json_decode($response);
+		$result = $data->rates;
+		$rateCol = 0;
+		$rates 	 = array();
+		foreach ($result as $key => $value) {
+			if($key ==='COP' )
+				$rateCol = (double)$value;
+		}
+
+		foreach ($result as $key => $value) {
+			if($value>0)
+				$rates[$key] = round($rateCol/$value,2);
+		}
+		var_dump($rates);
+	}
 }

@@ -5,15 +5,9 @@
 .contentColumn {
   float: left;width: 33%;
 }
-li#menu-item-11077,li#menu-item-11078,#newsletterwidget-2 {
-  display: none;
-}
-#menu-footer-menu:before {
-  display:none;
-}
-.site-info {
-  width: 100%;display: inline-block;
-}
+li#menu-item-11077,li#menu-item-11078,#newsletterwidget-2 {display: none;}
+#menu-footer-menu:before { display:none;}
+.site-info {width: 100%;display: inline-block;}
 .footer-widget-area {
     height: 240px;
     padding: 35px 0;
@@ -25,12 +19,17 @@ li#menu-item-11077,li#menu-item-11078,#newsletterwidget-2 {
 .site-footer {
     background-color: #ffffff;
 }
-.cat__icon path , svg#Capa_1 {
-    fill: #FFFF;
-}
-.card__tags svg#Capa_1 {
+
+.card__tags svg#Capa_1,
+.pin__icon svg#Capa_1,
+.category-icon svg#Capa_1 {
     fill: #dd0000;
 }
+
+.cat__icon path , .cat__icon svg#Capa_1{
+    fill: #FFFF;
+}
+
 .woocommerce-product-details__short-description p {
     padding-bottom: 10px;
 }
