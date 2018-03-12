@@ -220,11 +220,11 @@ function listable_scripts() {
 		),
 		'strings' => array(
 			'wp-job-manager-file-upload' => esc_html__( 'Add Photo', 'listable' ),
-			'no_job_listings_found' => esc_html__( 'No results', 'listable' ),
-			'results-no' => esc_html__( 'Results', 'listable'), //@todo this is not quite right as it is tied to the number of results - they can 1 or 0
+			'no_job_listings_found' => esc_html__( '0 Resultados', 'listable' ),
+			'results-no' => esc_html__( 'Resultados', 'listable'), //@todo this is not quite right as it is tied to the number of results - they can 1 or 0
 			'select_some_options' => esc_html__( 'Select Some Options', 'listable' ),
 			'select_an_option' => esc_html__( 'Select an Option', 'listable' ),
-			'no_results_match' => esc_html__( 'No results match', 'listable' ),
+			'no_results_match' => esc_html__( 'Resultados no encontrados', 'listable' ),
 			'social_login_string' => esc_html__( 'or', 'listable' ),
 		)
 	) ) );

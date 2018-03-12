@@ -6,6 +6,7 @@
  */
 
 global $post;
+$pdf 			= get_post_meta( get_the_ID(), 'download_pdf', true );
 
 $taxonomies = array();
 $data_output = '';
@@ -29,16 +30,18 @@ if ( ! is_wp_error( $terms ) && ( is_array( $terms ) || is_object( $terms ) ) ) 
 }
 
 $listing_is_claimed  = get_post_meta( $post->ID, '_claimed', true );?>
-
 <div class="single_job_listing"
 	data-latitude="<?php echo get_post_meta($post->ID, 'geolocation_lat', true); ?>"
 	data-longitude="<?php echo get_post_meta($post->ID, 'geolocation_long', true); ?>"
 	data-categories="<?php echo $termString; ?>"
 	<?php echo $data_output; ?>>
-
+	<div class="download_customer">
+		<?php echo do_shortcode( $pdf );?>
+	</div>
 	<?php if ( get_option( 'job_manager_hide_expired_content', 1 ) && 'expired' === $post->post_status ) : ?>
 		<div class="job-manager-info"><?php esc_html_e( 'This listing has expired.', 'listable' ); ?></div>
 	<?php else : ?>
+
 		<div class="grid">
 			<div class="grid__item  column-content  entry-content">
 				<header class="entry-header">
@@ -84,6 +87,7 @@ $listing_is_claimed  = get_post_meta( $post->ID, '_claimed', true );?>
 					 */
 					do_action( 'single_job_listing_start' ); ?>
 				</header><!-- .entry-header -->
+
 				<?php if ( is_active_sidebar( 'listing_content' ) ) : ?>
 					<div class="listing-sidebar  listing-sidebar--main">
 						<?php dynamic_sidebar('listing_content'); ?>

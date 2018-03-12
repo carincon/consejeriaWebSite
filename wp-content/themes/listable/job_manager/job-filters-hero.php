@@ -158,12 +158,8 @@ if ( $fields_num >= 1 ) : ?>
 
         <div class="search_categories  search-filter-wrapper">
             <label for="search_categories"><?php esc_html_e( 'Category', 'listable' ); ?></label>
-<<<<<<< HEAD
             <?php job_manager_dropdown_categories( array( 'taxonomy' => 'job_listing_category', 'hierarchical' => 1, 'show_option_all' => esc_html__( 'Categoría', 'listable' ), 'name' => 'search_categories', 'orderby' => 'name', 'multiple' => false ) ); ?>
-=======
-            <?php job_manager_dropdown_categories( array( 'taxonomy' => 'job_listing_category', 'hierarchical' => 1, 'show_option_all' => esc_html__( 'Any category', 'listable' ), 'name' => 'search_categories', 'orderby' => 'name', 'multiple' => false ) ); ?>
->>>>>>> f5d2a24df395f923f0917b2bcc28814ddbf3c62d
-        </div>
+    		</div>
 
         <?php endif;
 		endif; ?>

@@ -11,8 +11,9 @@ global $post;
 // get our custom meta
 //$facebook_url = get_post_meta( get_the_ID(), '_company_facebook', true);
 $location = get_post_meta( get_the_ID(), '_job_location', true);
-$phone = get_post_meta( get_the_ID(), '_company_phone', true);
-$twitter = get_post_meta( get_the_ID(), '_company_twitter', true);
+$phone 		= get_post_meta( get_the_ID(), '_company_phone', true);
+$twitter 	= get_post_meta( get_the_ID(), '_company_twitter', true);
+
 ?>
 <div class="single-meta">
 	<?php
@@ -42,7 +43,7 @@ $twitter = get_post_meta( get_the_ID(), '_company_twitter', true);
 		<!--a class="company_facebook"" href="<?php echo $facebook_url ?>"><?php _e( 'Facebook', 'listable'); ?></a-->
 	<?php }
 	 */
-	
+
 	do_action( 'listable_single_job_listing_after_social_icons' );
 
 	if ( $website = get_the_company_website() ) {

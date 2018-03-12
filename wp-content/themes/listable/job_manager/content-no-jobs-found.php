@@ -9,8 +9,8 @@
 $submit_listing_page_id = get_option( 'job_manager_submit_job_form_page_id', false ); ?>
 
 <div class="no-results">
-    <h2><?php esc_html_e( 'No Results', 'listable' ); ?></h2>
-    <p class="no-margins"><?php esc_html_e( 'There are no listings matching your search.', 'listable' ); ?></p>
+    <h2><?php esc_html_e( 'No se encontraron resultados', 'listable' ); ?></h2>
+    <p class="no-margins"><?php esc_html_e( 'No contamos con planes que coincidan con su busqueda.', 'listable' ); ?></p>
 
     <?php if ( ! empty( $submit_listing_page_id ) ) { ?>
         <p class="no-margins">
@@ -21,6 +21,6 @@ $submit_listing_page_id = get_option( 'job_manager_submit_job_form_page_id', fal
         </p>
     <?php } ?>
 
-    <a class="btn clear-results-btn reset" href="<?php echo listable_get_listings_page_url(); ?>"><?php esc_html_e( 'Clear Filters ', 'listable' ); ?></a>
+    <a class="btn clear-results-btn reset" href="<?php echo listable_get_listings_page_url(); ?>"><?php esc_html_e( 'Limpiar Filtros ', 'listable' ); ?></a>
 
 </div>

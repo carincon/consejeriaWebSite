@@ -125,7 +125,7 @@ if ( listable_using_facetwp() ) : ?>
 						<?php job_manager_dropdown_categories( array(
 							'taxonomy'        => 'job_listing_category',
 							'hierarchical'    => 1,
-							'show_option_all' => esc_html__( 'Any category', 'listable' ),
+							'show_option_all' => esc_html__( 'Todas', 'listable' ),
 							'name'            => 'search_categories',
 							'orderby'         => 'name',
 							'selected'        => $selected_category,
